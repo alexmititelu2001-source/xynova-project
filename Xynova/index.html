@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xynova Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-background"></div>
+    
+    <header class="top-bar">
+        <div class="logo-area">
+            <img src="icons/icon.png" alt="Logo" class="top-logo">
+            <a href="https://discord.gg/Xynova" target="_blank" class="nav-btn">Support</a>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn" onclick="toggleAuthMode()">Log In</button>
+        </div>
+    </header>
+
+    <div class="signup-container">
+        <div class="brand-side">
+            <img src="icons/thefullicon.png" alt="Xynova Logo" class="brand-logo">
+            <div class="tagline">Repowering Imagination™</div>
+        </div>
+
+        <div class="signup-box">
+            <h2 class="box-title" id="box-title">SIGN UP NOW</h2>
+            <button class="discord-btn" onclick="mockDiscordLogin()">Verify with Discord</button>
+            <input type="text" id="username" placeholder="Username" class="input-field">
+            <input type="password" id="password" placeholder="Password" class="input-field">
+            <input type="password" id="confirm-password" placeholder="Confirm Password" class="input-field">
+            <button class="submit-btn" id="submit-btn" onclick="handleAuth()">Sign Up</button>
+            <div class="footer-links">
+                <span class="link-text" id="toggle-link" onclick="toggleAuthMode()">Already have an account? Login!</span>
+                <span class="link-text">Forgot password?</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="inspiration-credit">
+        Inspiration from <a href="https://pekora.zip" target="_blank" class="credit-link">pekora.zip</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
