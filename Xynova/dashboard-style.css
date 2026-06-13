@@ -83,54 +83,59 @@ body {
     flex-direction: column;
 }
 
-.sidebar-user {
+/* Restored Sidebar Logo */
+.sidebar-logo-area {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 5px;
     border-bottom: 1px solid #ccc;
 }
 
-.mini-avatar {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    object-fit: cover;
+.sidebar-main-logo {
+    width: 30px;
+    height: auto;
 }
 
-#mini-username {
+.sidebar-brand-text {
     font-weight: bold;
-    font-size: 14px;
-    color: #333;
+    font-size: 16px;
+    color: #111;
 }
 
 .sidebar-menu {
     display: flex;
     flex-direction: column;
-    gap: 2px; /* Makes the buttons very close together */
+    gap: 2px;
 }
 
-.sidebar-link {
+/* Invisible Buttons Clinging to the Left */
+.sidebar-btn {
     display: flex;
     align-items: center;
-    gap: 10px;
+    width: 100%; /* Forces it to act like a full block button */
+    gap: 8px;
     text-decoration: none;
     color: #222;
     font-weight: bold;
     font-size: 14px;
-    padding: 6px 8px; /* Tight padding to match image */
-    border-radius: 4px;
+    padding: 6px 0; /* Left padding removed so they cling to the side */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
 }
 
-.sidebar-link span {
+.sidebar-btn span {
     font-size: 16px;
-    width: 20px;
+    width: 25px; /* Ensures all icons take up the exact same amount of space */
     text-align: center;
 }
 
-.sidebar-link:hover {
+.sidebar-btn:hover {
     background-color: #d4d4d4;
+    border-radius: 4px;
 }
 
 .badge {
@@ -139,11 +144,11 @@ body {
     font-size: 11px;
     padding: 2px 6px;
     border-radius: 10px;
-    margin-left: auto;
+    margin-left: 5px;
 }
 
 .admin-link {
-    color: #444; /* Slightly different color to blend in */
+    color: #444;
 }
 
 .upgrade-btn {
