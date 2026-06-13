@@ -31,10 +31,29 @@
     <div class="page-layout">
         
         <aside class="sidebar">
-            <img src="icons/sidebarnobackground.png" alt="Menu" class="sidebar-img">
-            
-            <img src="icons/adminside.png" id="admin-sidebar" alt="Admin Menu" class="sidebar-img" style="display: none; margin-top: 10px;">
-            
+            <div class="sidebar-user">
+                <img src="icons/icon.png" alt="Avatar" id="mini-avatar" class="mini-avatar">
+                <span id="mini-username">User</span>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="#" class="sidebar-link"><span>🏠</span> Home</a>
+                <a href="#" class="sidebar-link"><span>👤</span> Profile</a>
+                <a href="#" class="sidebar-link"><span>💬</span> Messages</a>
+                <a href="#" class="sidebar-link"><span>👥</span> Friends <span class="badge">12</span></a>
+                <a href="#" class="sidebar-link"><span>✏️</span> Avatar</a>
+                <a href="#" class="sidebar-link"><span>🎒</span> Inventory</a>
+                <a href="#" class="sidebar-link"><span>⇄</span> Trade</a>
+                <a href="#" class="sidebar-link"><span>🏢</span> Groups</a>
+                <a href="#" class="sidebar-link"><span>🗨️</span> Forums</a>
+                <a href="#" class="sidebar-link"><span>📥</span> Download</a>
+                
+                <a href="#" id="admin-btn" class="sidebar-link admin-link" style="display: none; margin-top: 25px;">
+                    <span>🔨</span> Admin
+                </a>
+            </nav>
+
+            <button class="upgrade-btn">Upgrade Now</button>
             <button class="logout-btn" onclick="logoutUser()">Log Out</button>
         </aside>
 
@@ -57,23 +76,28 @@
 
     <script>
         window.onload = function() {
-            // Get the current logged-in user
             const savedUser = localStorage.getItem("discord_username") || localStorage.getItem("active_session");
+            const savedAvatar = localStorage.getItem("discord_avatar");
 
             if (!savedUser) {
                 window.location.href = "/";
                 return;
             }
 
-            // Update Greetings and Nav bar
+            // Update text elements
             document.getElementById("dash-greeting").innerText = "Hello, " + savedUser + "!";
             document.getElementById("nav-username").innerText = savedUser + ": 13+";
+            document.getElementById("mini-username").innerText = savedUser;
+
+            if (savedAvatar) {
+                document.getElementById("mini-avatar").src = savedAvatar;
+            }
 
             // SUPER SECRET ADMIN CHECK
-            // Checks if username is exactly "Xynova" and the saved password is "xynovaofficialaccount"
             const storedPassword = localStorage.getItem("user_xynova");
             if (savedUser.toLowerCase() === "xynova" && storedPassword === "xynovaofficialaccount") {
-                document.getElementById("admin-sidebar").style.display = "block";
+                // Change display from 'none' to 'flex' so the icon aligns correctly
+                document.getElementById("admin-btn").style.display = "flex";
             }
         };
 
