@@ -3,80 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xynova - Dashboard</title>
+    <title>Xynova - Home</title>
     <link rel="stylesheet" href="dashboard-style.css">
 </head>
 <body>
 
-    <aside class="sidebar">
-        <div class="sidebar-brand">
-            <h2>XYNOVA</h2>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <h2 class="brand-logo">Xynova</h2>
+            <a href="#">Games</a>
+            <a href="#">Catalog</a>
+            <a href="#">Create</a>
+            <a href="#">Donate</a>
         </div>
-        <nav class="sidebar-menu">
-            <a href="#" class="menu-item active">Home</a>
-            <a href="#" class="menu-item">Games</a>
-            <a href="#" class="menu-item">Catalog</a>
-            <a href="#" class="menu-item">Create</a>
-            <a href="#" class="menu-item">Groups</a>
-        </nav>
-        <div class="sidebar-footer">
-            <button class="logout-btn" onclick="logoutUser()">Log Out</button>
+        <div class="nav-center">
+            <input type="text" placeholder="Search" class="search-bar">
         </div>
-    </aside>
+        <div class="nav-right">
+            <span id="nav-username" style="margin-right: 15px; font-weight: bold;">User: 13+</span>
+            <span class="currency">💰 257</span>
+            <span class="currency">💎 530</span>
+            <span class="settings-icon">⚙️</span>
+        </div>
+    </nav>
+    <div class="orange-strip"></div>
 
-    <main class="main-container">
+    <div class="page-layout">
         
-        <header class="profile-banner">
-            <img id="dash-avatar" src="icons/icon.png" alt="Profile Avatar" class="user-avatar">
-            <h1 id="dash-greeting">Hello, User!</h1>
-        </header>
-
-        <section class="dashboard-grid">
+        <aside class="sidebar">
+            <img src="icons/sidebarnobackground.png" alt="Menu" class="sidebar-img">
             
-            <div class="grid-left">
-                <div class="panel-box">
-                    <h3>Recently Played</h3>
-                    <div class="items-row">
-                        <div class="item-card">
-                            <div class="card-thumb placeholder-orange"></div>
-                            <span class="card-title">Project Delta</span>
-                        </div>
-                        <div class="item-card">
-                            <div class="card-thumb placeholder-blue"></div>
-                            <span class="card-title">Grid Runner</span>
-                        </div>
-                    </div>
-                </div>
+            <img src="icons/adminside.png" id="admin-sidebar" alt="Admin Menu" class="sidebar-img" style="display: none; margin-top: 10px;">
+            
+            <button class="logout-btn" onclick="logoutUser()">Log Out</button>
+        </aside>
+
+        <main class="content-area">
+            
+            <div class="side-banner">
+                <div class="placeholder-ad purple-ad">SIMPLY<br>WALK AROUND IT</div>
             </div>
 
-            <div class="grid-right">
-                <div class="panel-box ad-rail">
-                    <h3>Announcements</h3>
-                    <div class="announcement-content">
-                        <p>Welcome to Xynova! Customize your view or update your profile via Discord connections seamlessly.</p>
-                    </div>
-                </div>
+            <div class="center-feed">
+                <h1 id="dash-greeting">Hello, User!</h1>
             </div>
 
-        </section>
-    </main>
+            <div class="side-banner right-banner">
+                <div class="placeholder-ad grey-ad">The Nova Group<br>Awaits you...</div>
+            </div>
+
+        </main>
+    </div>
 
     <script>
         window.onload = function() {
-            // Read values saved into the client instance from authorization flows
+            // Get the current logged-in user
             const savedUser = localStorage.getItem("discord_username") || localStorage.getItem("active_session");
-            const savedAvatar = localStorage.getItem("discord_avatar");
 
             if (!savedUser) {
-                // Kick unauthenticated users back out to the registration window
                 window.location.href = "/";
                 return;
             }
 
-            // Bind the DOM injection data targets dynamically
+            // Update Greetings and Nav bar
             document.getElementById("dash-greeting").innerText = "Hello, " + savedUser + "!";
-            if (savedAvatar) {
-                document.getElementById("dash-avatar").src = savedAvatar;
+            document.getElementById("nav-username").innerText = savedUser + ": 13+";
+
+            // SUPER SECRET ADMIN CHECK
+            // Checks if username is exactly "Xynova" and the saved password is "xynovaofficialaccount"
+            const storedPassword = localStorage.getItem("user_xynova");
+            if (savedUser.toLowerCase() === "xynova" && storedPassword === "xynovaofficialaccount") {
+                document.getElementById("admin-sidebar").style.display = "block";
             }
         };
 
