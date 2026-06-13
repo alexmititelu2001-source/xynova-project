@@ -21,8 +21,8 @@
         </div>
         <div class="nav-right">
             <span id="nav-username" style="margin-right: 15px; font-weight: bold;">User: 13+</span>
-            <span class="currency">💰 257</span>
-            <span class="currency">💎 530</span>
+            <span class="currency">💰 0</span>
+            <span class="currency">💎 0</span>
             <span class="settings-icon">⚙️</span>
         </div>
     </nav>
@@ -31,24 +31,25 @@
     <div class="page-layout">
         
         <aside class="sidebar">
-            <div class="sidebar-user">
-                <img src="icons/icon.png" alt="Avatar" id="mini-avatar" class="mini-avatar">
-                <span id="mini-username">User</span>
+            
+            <div class="sidebar-logo-area">
+                <img src="icons/icon.png" alt="Xynova" class="sidebar-main-logo">
+                <span class="sidebar-brand-text">Xynova</span>
             </div>
 
             <nav class="sidebar-menu">
-                <a href="#" class="sidebar-link"><span>🏠</span> Home</a>
-                <a href="#" class="sidebar-link"><span>👤</span> Profile</a>
-                <a href="#" class="sidebar-link"><span>💬</span> Messages</a>
-                <a href="#" class="sidebar-link"><span>👥</span> Friends <span class="badge">12</span></a>
-                <a href="#" class="sidebar-link"><span>✏️</span> Avatar</a>
-                <a href="#" class="sidebar-link"><span>🎒</span> Inventory</a>
-                <a href="#" class="sidebar-link"><span>⇄</span> Trade</a>
-                <a href="#" class="sidebar-link"><span>🏢</span> Groups</a>
-                <a href="#" class="sidebar-link"><span>🗨️</span> Forums</a>
-                <a href="#" class="sidebar-link"><span>📥</span> Download</a>
+                <a href="#" class="sidebar-btn"><span>🏠</span> Home</a>
+                <a href="#" class="sidebar-btn"><span>👤</span> Profile</a>
+                <a href="#" class="sidebar-btn"><span>💬</span> Messages</a>
+                <a href="#" class="sidebar-btn"><span>👥</span> Friends <span class="badge">12</span></a>
+                <a href="#" class="sidebar-btn"><span>✏️</span> Avatar</a>
+                <a href="#" class="sidebar-btn"><span>🎒</span> Inventory</a>
+                <a href="#" class="sidebar-btn"><span>⇄</span> Trade</a>
+                <a href="#" class="sidebar-btn"><span>🏢</span> Groups</a>
+                <a href="#" class="sidebar-btn"><span>🗨️</span> Forums</a>
+                <a href="#" class="sidebar-btn"><span>📥</span> Download</a>
                 
-                <a href="#" id="admin-btn" class="sidebar-link admin-link" style="display: none; margin-top: 25px;">
+                <a href="#" id="admin-btn" class="sidebar-btn admin-link" style="display: none; margin-top: 25px;">
                     <span>🔨</span> Admin
                 </a>
             </nav>
@@ -77,7 +78,6 @@
     <script>
         window.onload = function() {
             const savedUser = localStorage.getItem("discord_username") || localStorage.getItem("active_session");
-            const savedAvatar = localStorage.getItem("discord_avatar");
 
             if (!savedUser) {
                 window.location.href = "/";
@@ -87,16 +87,10 @@
             // Update text elements
             document.getElementById("dash-greeting").innerText = "Hello, " + savedUser + "!";
             document.getElementById("nav-username").innerText = savedUser + ": 13+";
-            document.getElementById("mini-username").innerText = savedUser;
-
-            if (savedAvatar) {
-                document.getElementById("mini-avatar").src = savedAvatar;
-            }
 
             // SUPER SECRET ADMIN CHECK
             const storedPassword = localStorage.getItem("user_xynova");
             if (savedUser.toLowerCase() === "xynova" && storedPassword === "xynovaofficialaccount") {
-                // Change display from 'none' to 'flex' so the icon aligns correctly
                 document.getElementById("admin-btn").style.display = "flex";
             }
         };
