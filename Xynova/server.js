@@ -5,24 +5,20 @@ const app = express();
 
 app.use(express.static('.'));
 
-// We pull these from Railway Variables so your secret stays hidden
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 
-// When they click "Verify", send them to Discord
 app.get('/auth/login', (req, res) => {
-    const url = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify`;
+    const url = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify&locale=en-US`;
     res.redirect(url);
 });
 
-// Discord sends them back here with a secret code
 app.get('/auth/callback', async (req, res) => {
     const code = req.query.code;
     if (!code) return res.redirect('/?error=NoCodeProvided');
 
     try {
-        // Trade the code for a token securely
         const params = new URLSearchParams({
             client_id: CLIENT_ID,
             client_secret: CLIENT_SECRET,
@@ -37,7 +33,6 @@ app.get('/auth/callback', async (req, res) => {
 
         const accessToken = tokenResponse.data.access_token;
 
-        // Fetch the user's profile picture and name
         const userResponse = await axios.get('https://discord.com/api/users/@me', {
             headers: { Authorization: `Bearer ${accessToken}` }
         });
@@ -47,7 +42,6 @@ app.get('/auth/callback', async (req, res) => {
             ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` 
             : 'https://cdn.discordapp.com/embed/avatars/0.png';
 
-        // Send them back to your HTML page with the data in the URL
         res.redirect(`/?username=${encodeURIComponent(user.username)}&avatar=${encodeURIComponent(avatarUrl)}`);
         
     } catch (error) {
