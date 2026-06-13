@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xynova - Dashboard</title>
+    <link rel="stylesheet" href="dashboard-style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <h2>XYNOVA</h2>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="#" class="menu-item active">Home</a>
+            <a href="#" class="menu-item">Games</a>
+            <a href="#" class="menu-item">Catalog</a>
+            <a href="#" class="menu-item">Create</a>
+            <a href="#" class="menu-item">Groups</a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="logout-btn" onclick="logoutUser()">Log Out</button>
+        </div>
+    </aside>
+
+    <main class="main-container">
+        
+        <header class="profile-banner">
+            <img id="dash-avatar" src="icons/icon.png" alt="Profile Avatar" class="user-avatar">
+            <h1 id="dash-greeting">Hello, User!</h1>
+        </header>
+
+        <section class="dashboard-grid">
+            
+            <div class="grid-left">
+                <div class="panel-box">
+                    <h3>Recently Played</h3>
+                    <div class="items-row">
+                        <div class="item-card">
+                            <div class="card-thumb placeholder-orange"></div>
+                            <span class="card-title">Project Delta</span>
+                        </div>
+                        <div class="item-card">
+                            <div class="card-thumb placeholder-blue"></div>
+                            <span class="card-title">Grid Runner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-right">
+                <div class="panel-box ad-rail">
+                    <h3>Announcements</h3>
+                    <div class="announcement-content">
+                        <p>Welcome to Xynova! Customize your view or update your profile via Discord connections seamlessly.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        window.onload = function() {
+            // Read values saved into the client instance from authorization flows
+            const savedUser = localStorage.getItem("discord_username") || localStorage.getItem("active_session");
+            const savedAvatar = localStorage.getItem("discord_avatar");
+
+            if (!savedUser) {
+                // Kick unauthenticated users back out to the registration window
+                window.location.href = "/";
+                return;
+            }
+
+            // Bind the DOM injection data targets dynamically
+            document.getElementById("dash-greeting").innerText = "Hello, " + savedUser + "!";
+            if (savedAvatar) {
+                document.getElementById("dash-avatar").src = savedAvatar;
+            }
+        };
+
+        function logoutUser() {
+            localStorage.clear();
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
