@@ -1,6 +1,5 @@
 let isLoginMode = false;
 
-// Massive blacklist covering profanities, slurs, and leetspeak bypass variations
 const BANNED_WORDS = [
     "dick", "d1ck", "dickhead", "d1ckh@ed", "dicck", "dild", "dildo",
     "bitch", "b!tch", "b17ch", "biatch", "b1tch",
@@ -73,7 +72,6 @@ function handleAuth() {
     } else {
         const confirmPass = document.getElementById('confirm-password').value;
         
-        // Advanced structural scan: cleans string variations to catch hidden bypass methods
         const cleanUser = user.toLowerCase().replace(/[^a-z0-9]/g, ""); 
         
         const containsSwearWord = BANNED_WORDS.some(word => {
