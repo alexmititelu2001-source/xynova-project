@@ -1,16 +1,14 @@
 let isLoginMode = false;
 
 const BANNED_WORDS = [
-    "dick", "d1ck", "dickhead", "d1ckh@ed", "dicck", "dild", "dildo",
-    "bitch", "b!tch", "b17ch", "biatch", "b1tch",
-    "ass", "asshole", "arse", "arsehole", "@ss", "a$$", "assface",
-    "fuck", "fuc", "fuk", "fck", "fukah", "fuken", "fukin", "fukk", "fukkah", "fukken", "fukker", "fukkin", "motherfucker", "mothafucker", "dumbfuck",
-    "cunt", "c#nt", "cnut", "cvnt", "clit", "clunge",
-    "shit", "sh1t", "5h1t", "4hit",
+    "dick", "d1ck", "dickhead", "dicck", "dild", "dildo",
+    "bitch", "b1tch", "biatch", "ass", "asshole", "arse", "arsehole", 
+    "fuck", "fuc", "fuk", "fck", "fukah", "fuken", "fukin", "fukk", "motherfucker", "dumbfuck",
+    "cunt", "cnut", "cvnt", "clit", "clunge", "shit", "sh1t",
     "whore", "wh0r", "whor3", "hoe", "h0e", "ho3", "h03", "slut",
-    "twat", "tw4t", "tw@t", "tosser", "t0sser", "wanker", "w4nkers",
-    "rape", "r@pe", "rap3", "r4pe", "cocaine", "meth", "fentanyl",
-    "nig", "n1g", "nigger", "nigga", "coon", "c00n", "fag", "f@g", "fagget", "faggot", "retard", "kike", "nazi", "naz1"
+    "twat", "tw4t", "tosser", "t0sser", "wanker", "w4nkers",
+    "rape", "rap3", "r4pe", "cocaine", "meth", "fentanyl",
+    "nigger", "nigga", "coon", "fag", "fagget", "faggot", "retard", "kike", "nazi"
 ];
 
 window.onload = function() {
@@ -28,19 +26,13 @@ window.onload = function() {
 };
 
 function checkDiscordState() {
-    const savedUsername = localStorage.getItem("discord_username");
+    const savedUsername = localStorage.getItem("discord_username") || localStorage.getItem("active_session");
     const savedAvatar = localStorage.getItem("discord_avatar");
     const discordArea = document.getElementById('discord-auth-area');
 
-    if (savedUsername && discordArea) {
-        discordArea.innerHTML = `
-            <div style="display: flex; flex-direction: column; align-items: center; background: #e6e6e6; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
-                <span style="font-size: 12px; font-weight: bold; color: #555; margin-bottom: 5px;">VERIFIED VIA DISCORD</span>
-                <img src="${savedAvatar}" alt="Avatar" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #005a8d; margin-bottom: 5px;">
-                <span style="font-weight: bold; color: #333; font-size: 15px; margin-bottom: 8px;">${savedUsername}</span>
-                <button class="link-text" style="background: none; border: none; text-decoration: underline; color: #ff3333;" onclick="unlinkDiscord()">Unlink Discord</button>
-            </div>
-        `;
+    if (savedUsername) {
+        window.location.href = "/dashboard.html";
+        return;
     }
 }
 
@@ -65,7 +57,7 @@ function handleAuth() {
     if (isLoginMode) {
         if (localStorage.getItem("user_" + user.toLowerCase()) === pass) {
             localStorage.setItem("active_session", user);
-            showError("Successfully logged in!"); 
+            window.location.href = "/dashboard.html";
         } else {
             showError("Invalid username or password.");
         }
@@ -75,7 +67,8 @@ function handleAuth() {
         const cleanUser = user.toLowerCase().replace(/[^a-z0-9]/g, ""); 
         
         const containsSwearWord = BANNED_WORDS.some(word => {
-            return user.toLowerCase().includes(word) || cleanUser.includes(word.replace(/[^a-z0-9]/g, ""));
+            if (!word) return false; 
+            return user.toLowerCase().includes(word) || cleanUser.includes(word);
         });
 
         if (containsSwearWord) {
@@ -89,8 +82,9 @@ function handleAuth() {
         }
 
         localStorage.setItem("user_" + user.toLowerCase(), pass);
-        showError("");
-        toggleAuthMode();
+        localStorage.setItem("active_session", user);
+        
+        window.location.href = "/dashboard.html";
     }
 }
 
@@ -106,10 +100,4 @@ function showError(msg) {
 
 function mockDiscordLogin() {
     window.location.href = "/auth/login";
-}
-
-function unlinkDiscord() {
-    localStorage.removeItem("discord_username");
-    localStorage.removeItem("discord_avatar");
-    window.location.reload();
 }
