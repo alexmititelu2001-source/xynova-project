@@ -24,7 +24,8 @@
             <div class="tagline">Repowering Imagination™</div>
         </div>
 
-        <div class="signup-box">
+        <!-- Default Login/Signup Form -->
+        <div class="signup-box" id="auth-box">
             <h2 class="box-title" id="box-title">SIGN UP NOW</h2>
             <button class="discord-btn" onclick="mockDiscordLogin()">Verify with Discord</button>
             <input type="text" id="username" placeholder="Username" class="input-field">
@@ -36,10 +37,15 @@
                 <span class="link-text">Forgot password?</span>
             </div>
         </div>
-    </div>
 
-    <div class="inspiration-credit">
-        Inspiration from <a href="https://pekora.zip" target="_blank" class="credit-link">pekora.zip</a>
+        <!-- Logged In Profile View (Hidden by default) -->
+        <div class="signup-box" id="profile-box" style="display: none; align-items: center; text-align: center;">
+            <h2 class="box-title">WELCOME BACK</h2>
+            <img id="profile-avatar" src="" alt="Avatar" style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid #005a8d; margin: 15px 0;">
+            <h3 id="profile-username" style="color: #333; margin: 0 0 15px 0; font-size: 20px;"></h3>
+            <button class="submit-btn" style="width: 100%;" onclick="logout()">Log Out</button>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
