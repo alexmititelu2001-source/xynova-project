@@ -16,9 +16,22 @@
             <a href="#">Create</a>
             <a href="#">Donate</a>
         </div>
+        
         <div class="nav-center">
-            <input type="text" placeholder="Search" class="search-bar">
+            <div class="search-container">
+                <input type="text" id="main-search-input" placeholder="Search" class="search-bar" autocomplete="off">
+                <img src="icons/icon.png" alt="Search Icon" class="search-bar-lens">
+                
+                <div id="search-dropdown-overlay" class="search-dropdown">
+                    <a href="#" class="search-dropdown-item">Search "<span class="search-term-fill"></span>" in Catalog</a>
+                    <a href="#" class="search-dropdown-item">Search "<span class="search-term-fill"></span>" in People</a>
+                    <a href="#" class="search-dropdown-item">Search "<span class="search-term-fill"></span>" in Games</a>
+                    <a href="#" class="search-dropdown-item">Search "<span class="search-term-fill"></span>" in Groups</a>
+                    <a href="#" class="search-dropdown-item">Search "<span class="search-term-fill"></span>" in Library</a>
+                </div>
+            </div>
         </div>
+        
         <div class="nav-right">
             <span id="nav-username" style="margin-right: 15px; font-weight: bold;">User: 13+</span>
             
@@ -106,6 +119,32 @@
                 document.getElementById("admin-section").style.display = "block";
             }
         };
+
+        // Live Typing Core Search Dropdown Mechanics
+        const searchInput = document.getElementById("main-search-input");
+        const searchDropdown = document.getElementById("search-dropdown-overlay");
+        const textSpans = document.querySelectorAll(".search-term-fill");
+
+        searchInput.addEventListener("input", function() {
+            const currentVal = searchInput.value;
+            
+            if (currentVal.trim().length > 0) {
+                // Populate all query variations inside dropdown entries
+                textSpans.forEach(span => {
+                    span.innerText = currentVal;
+                });
+                searchDropdown.classList.add("visible");
+            } else {
+                searchDropdown.classList.remove("visible");
+            }
+        });
+
+        // Close dropdown menu automatically if click occurs outside layout container
+        document.addEventListener("click", function(event) {
+            if (!event.target.closest(".search-container")) {
+                searchDropdown.classList.remove("visible");
+            }
+        });
 
         function logoutUser() {
             localStorage.clear();
