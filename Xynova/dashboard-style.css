@@ -14,7 +14,7 @@ body {
 .top-nav {
     background-color: #4a3028;
     color: white;
-    height: 45px;
+    height: 48px;               /* Slipped up slightly to make room for bigger header items */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,28 +54,28 @@ body {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 22px;                 /* Widened gap for clean breathing room between bigger items */
 }
 
-/* Custom Currency Alignment & Scaled Sizing Layout */
+/* Custom Currency Alignment & Large Sizing Layout */
 .currency {
     display: inline-flex;
     align-items: center;
     gap: 8px;              
     font-weight: bold;
-    font-size: 18px;       
+    font-size: 20px;            /* Increased text layout to perfectly balance larger scale assets */
 }
 
 .nav-currency-icon {
-    height: 28px;               /* Bumped up sizing look from 24px */
+    height: 32px;               /* Increased dimensions for an authentic, prominent layout */
     width: auto;
     object-fit: contain;
-    image-rendering: pixelated; /* Retains crisp retro fidelity on modern monitors */
+    image-rendering: pixelated; /* Ensures pixel lines stay sharp on ultra-res displays */
 }
 
-/* Custom Settings Link layout */
+/* Custom Settings Gear Layout */
 .nav-settings-icon {
-    height: 26px;               /* Clean sizing structure built around the navigation bar height */
+    height: 30px;               /* Clean sizing scale up matching currency dimensions */
     width: auto;
     object-fit: contain;
     image-rendering: pixelated;
@@ -101,7 +101,7 @@ body {
 .sidebar {
     width: 180px;
     background-color: transparent;
-    min-height: calc(100vh - 71px);
+    min-height: calc(100vh - 74px);
     display: flex;
     flex-direction: column;
 }
