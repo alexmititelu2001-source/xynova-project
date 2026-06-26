@@ -14,7 +14,7 @@ body {
 .top-nav {
     background-color: #4a3028;
     color: white;
-    height: 48px;               /* Slipped up slightly to make room for bigger header items */
+    height: 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,18 +43,75 @@ body {
 
 .nav-left a:hover { text-decoration: underline; }
 
+/* Search Container positioning context */
+.search-container {
+    position: relative;
+    width: 320px;
+}
+
 .search-bar {
-    padding: 4px 10px;
-    width: 300px;
+    width: 100%;
+    padding: 5px 32px 5px 10px;
     border: none;
     border-radius: 3px;
     outline: none;
+    font-size: 13px;
+}
+
+/* Position icon directly at the right rim of input bar */
+.search-bar-lens {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 16px;
+    width: auto;
+    object-fit: contain;
+    image-rendering: pixelated;
+    pointer-events: none;
+}
+
+/* Dropdown Context Selection Window Layout rules */
+.search-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 1000;
+    padding: 4px 0;
+}
+
+.search-dropdown.visible {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-dropdown-item {
+    color: #333;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 13px;
+    text-align: left;
+    transition: background-color 0.1s;
+}
+
+.search-dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.search-term-fill {
+    font-weight: bold;
+    color: #000;
 }
 
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 22px;                 /* Widened gap for clean breathing room between bigger items */
+    gap: 22px;
 }
 
 /* Custom Currency Alignment & Large Sizing Layout */
@@ -63,19 +120,19 @@ body {
     align-items: center;
     gap: 8px;              
     font-weight: bold;
-    font-size: 20px;            /* Increased text layout to perfectly balance larger scale assets */
+    font-size: 20px;
 }
 
 .nav-currency-icon {
-    height: 32px;               /* Increased dimensions for an authentic, prominent layout */
+    height: 32px;               /* Scaled layout look matches reference image proportions */
     width: auto;
     object-fit: contain;
-    image-rendering: pixelated; /* Ensures pixel lines stay sharp on ultra-res displays */
+    image-rendering: pixelated; 
 }
 
 /* Custom Settings Gear Layout */
 .nav-settings-icon {
-    height: 30px;               /* Clean sizing scale up matching currency dimensions */
+    height: 30px;
     width: auto;
     object-fit: contain;
     image-rendering: pixelated;
