@@ -57,7 +57,19 @@ body {
     gap: 15px;
 }
 
-.currency { font-weight: bold; }
+/* Currency Styling for Custom Icons */
+.currency {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.nav-currency-icon {
+    height: 18px;
+    width: auto;
+    object-fit: contain;
+}
 
 .orange-strip {
     background-color: #d66f00;
@@ -73,7 +85,7 @@ body {
 }
 
 /* -------------------- */
-/* HTML SIDEBAR STYLING */
+/* IMAGE SIDEBAR SYSTEM */
 /* -------------------- */
 .sidebar {
     width: 180px;
@@ -83,14 +95,12 @@ body {
     flex-direction: column;
 }
 
-/* Restored Sidebar Logo */
 .sidebar-logo-area {
     display: flex;
     align-items: center;
     gap: 10px;
     padding-bottom: 20px;
     margin-bottom: 5px;
-    border-bottom: 1px solid #ccc;
 }
 
 .sidebar-main-logo {
@@ -104,55 +114,68 @@ body {
     color: #111;
 }
 
-.sidebar-menu {
+/* Menu Wrappers positioning the click hits on top of images */
+.sidebar-menu-wrapper, .sidebar-admin-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 150px;
+}
+
+.sidebar-img-main, .sidebar-img-admin {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-left: -5px;
+}
+
+/* 2cm Down Spacing for Admin block */
+.sidebar-admin-wrapper {
+    margin-top: 75px; 
+}
+
+/* Invisible overlay map grids */
+.invisible-overlay-grid {
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2px;
 }
 
-/* Invisible Buttons Clinging to the Left */
-.sidebar-btn {
-    display: flex;
-    align-items: center;
-    width: 100%; /* Forces it to act like a full block button */
-    gap: 8px;
-    text-decoration: none;
-    color: #222;
-    font-weight: bold;
-    font-size: 14px;
-    padding: 6px 0; /* Left padding removed so they cling to the side */
+/* Splitting the map height into 10 perfectly proportioned clickable blocks */
+.invisible-btn {
+    flex: 1;
     background: transparent;
-    border: none;
     cursor: pointer;
-    text-align: left;
+    border-radius: 3px;
+    transition: background 0.1s ease-in-out;
 }
 
-.sidebar-btn span {
-    font-size: 16px;
-    width: 25px; /* Ensures all icons take up the exact same amount of space */
-    text-align: center;
+/* Subtle visual indicator when hovering over items */
+.invisible-btn:hover {
+    background-color: rgba(0, 0, 0, 0.07);
 }
 
-.sidebar-btn:hover {
-    background-color: #d4d4d4;
-    border-radius: 4px;
+/* Admin singular transparent trigger hit target */
+.invisible-admin-btn {
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    cursor: pointer;
 }
 
-.badge {
-    background-color: #cc4444;
-    color: white;
-    font-size: 11px;
-    padding: 2px 6px;
-    border-radius: 10px;
-    margin-left: 5px;
+.invisible-admin-btn:hover {
+    background-color: rgba(0, 0, 0, 0.07);
 }
 
-.admin-link {
-    color: #444;
-}
-
+/* Action Buttons */
 .upgrade-btn {
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 8px;
     background-color: #8c5b52;
     color: white;
@@ -178,8 +201,7 @@ body {
 
 .logout-btn:hover { background-color: #bbb; }
 
-
-/* Center Content & Ad Banners */
+/* Content Area layout elements */
 .content-area {
     flex-grow: 1;
     display: flex;
