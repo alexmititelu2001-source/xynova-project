@@ -51,7 +51,7 @@ body {
 
 .search-bar {
     width: 100%;
-    padding: 5px 84px 5px 10px; /* Expanded right padding to fit the new triplet asset grid cleanly */
+    padding: 5px 94px 5px 10px; /* Adjusted spacing to safely contain the newly scaled up right gear asset */
     border: none;
     border-radius: 3px;
     outline: none;
@@ -70,8 +70,17 @@ body {
     pointer-events: none;
 }
 
-.search-bar-icons img {
+/* Scale adjustments matching relative pixel dimensions safely */
+.search-icon-left, .search-icon-middle {
     height: 18px;
+    width: auto;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+/* Right settings icon pushed to a distinctively larger scale */
+.search-icon-right {
+    height: 23px; /* Boosted layout sizing structure */
     width: auto;
     object-fit: contain;
     image-rendering: pixelated;
