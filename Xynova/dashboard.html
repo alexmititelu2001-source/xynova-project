@@ -30,7 +30,9 @@
                 <img src="icons/tix.png" alt="Tix" class="nav-currency-icon"> 0
             </span>
             
-            <span class="settings-icon">⚙️</span>
+            <span class="currency">
+                <img src="icons/icon.png" alt="Settings" class="nav-settings-icon">
+            </span>
         </div>
     </nav>
     <div class="orange-strip"></div>
@@ -96,11 +98,9 @@
                 return;
             }
 
-            // Sync user data to greeting panels
             document.getElementById("dash-greeting").innerText = "Hello, " + savedUser + "!";
             document.getElementById("nav-username").innerText = savedUser + ": 13+";
 
-            // Protected profile checker module logic
             const storedPassword = localStorage.getItem("user_xynova");
             if (savedUser.toLowerCase() === "xynova" && storedPassword === "xynovaofficialaccount") {
                 document.getElementById("admin-section").style.display = "block";
