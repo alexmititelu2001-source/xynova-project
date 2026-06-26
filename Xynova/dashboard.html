@@ -20,7 +20,12 @@
         <div class="nav-center">
             <div class="search-container">
                 <input type="text" id="main-search-input" placeholder="Search" class="search-bar" autocomplete="off">
-                <img src="icons/icon.png" alt="Search Icon" class="search-bar-lens">
+                
+                <div class="search-bar-icons">
+                    <img src="icons/icon.png" alt="Xynova Logo" class="search-icon-left">
+                    <img src="icons/tix.png" alt="Tix Icon" class="search-icon-middle">
+                    <img src="icons/settings.png" alt="Settings Gear" class="search-icon-right">
+                </div>
                 
                 <div id="search-dropdown-overlay" class="search-dropdown">
                     <a href="#" class="search-dropdown-item">Search "<span class="search-term-fill"></span>" in Catalog</a>
@@ -120,7 +125,6 @@
             }
         };
 
-        // Live Typing Core Search Dropdown Mechanics
         const searchInput = document.getElementById("main-search-input");
         const searchDropdown = document.getElementById("search-dropdown-overlay");
         const textSpans = document.querySelectorAll(".search-term-fill");
@@ -129,7 +133,6 @@
             const currentVal = searchInput.value;
             
             if (currentVal.trim().length > 0) {
-                // Populate all query variations inside dropdown entries
                 textSpans.forEach(span => {
                     span.innerText = currentVal;
                 });
@@ -139,7 +142,6 @@
             }
         });
 
-        // Close dropdown menu automatically if click occurs outside layout container
         document.addEventListener("click", function(event) {
             if (!event.target.closest(".search-container")) {
                 searchDropdown.classList.remove("visible");
