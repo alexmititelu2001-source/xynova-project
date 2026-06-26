@@ -54,7 +54,7 @@ body {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 18px;
 }
 
 /* Custom Currency Alignment & Scaled Sizing Layout */
@@ -63,14 +63,23 @@ body {
     align-items: center;
     gap: 8px;              
     font-weight: bold;
-    font-size: 16px;       
+    font-size: 18px;       
 }
 
 .nav-currency-icon {
-    height: 24px;          /* Scaled up bigger to mirror retro engine layouts natively */
+    height: 28px;               /* Bumped up sizing look from 24px */
     width: auto;
     object-fit: contain;
-    image-rendering: pixelated; /* Retains clear pixel values on high-res rendering monitors */
+    image-rendering: pixelated; /* Retains crisp retro fidelity on modern monitors */
+}
+
+/* Custom Settings Link layout */
+.nav-settings-icon {
+    height: 26px;               /* Clean sizing structure built around the navigation bar height */
+    width: auto;
+    object-fit: contain;
+    image-rendering: pixelated;
+    cursor: pointer;
 }
 
 .orange-strip {
@@ -129,7 +138,7 @@ body {
     margin-left: -5px;
 }
 
-/* Precisely 2cm down gap distance separation mapping */
+/* Spacing offset for admin panel image alignment */
 .sidebar-admin-wrapper {
     margin-top: 75px; 
 }
