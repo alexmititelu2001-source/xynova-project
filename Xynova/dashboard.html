@@ -21,8 +21,15 @@
         </div>
         <div class="nav-right">
             <span id="nav-username" style="margin-right: 15px; font-weight: bold;">User: 13+</span>
-            <span class="currency">💰 0</span>
-            <span class="currency">💎 0</span>
+            
+            <span class="currency">
+                <img src="icons/robux.png" alt="Robux" class="nav-currency-icon"> 0
+            </span>
+            
+            <span class="currency">
+                <img src="icons/tix.png" alt="Tix" class="nav-currency-icon"> 0
+            </span>
+            
             <span class="settings-icon">⚙️</span>
         </div>
     </nav>
@@ -33,26 +40,31 @@
         <aside class="sidebar">
             
             <div class="sidebar-logo-area">
-                <img src="icons/icon.png" alt="Xynova" class="sidebar-main-logo">
+                <img src="icons/icon.png" alt="Xynova Logo" class="sidebar-main-logo">
                 <span class="sidebar-brand-text">Xynova</span>
             </div>
 
-            <nav class="sidebar-menu">
-                <a href="#" class="sidebar-btn"><span>🏠</span> Home</a>
-                <a href="#" class="sidebar-btn"><span>👤</span> Profile</a>
-                <a href="#" class="sidebar-btn"><span>💬</span> Messages</a>
-                <a href="#" class="sidebar-btn"><span>👥</span> Friends <span class="badge">12</span></a>
-                <a href="#" class="sidebar-btn"><span>✏️</span> Avatar</a>
-                <a href="#" class="sidebar-btn"><span>🎒</span> Inventory</a>
-                <a href="#" class="sidebar-btn"><span>⇄</span> Trade</a>
-                <a href="#" class="sidebar-btn"><span>🏢</span> Groups</a>
-                <a href="#" class="sidebar-btn"><span>🗨️</span> Forums</a>
-                <a href="#" class="sidebar-btn"><span>📥</span> Download</a>
+            <div class="sidebar-menu-wrapper">
+                <img src="sidebarnobackground.png" alt="Main Menu" class="sidebar-img-main">
                 
-                <a href="#" id="admin-btn" class="sidebar-btn admin-link" style="display: none; margin-top: 25px;">
-                    <span>🔨</span> Admin
-                </a>
-            </nav>
+                <div class="invisible-overlay-grid">
+                    <a href="#" class="invisible-btn" title="Home"></a>
+                    <a href="#" class="invisible-btn" title="Profile"></a>
+                    <a href="#" class="invisible-btn" title="Messages"></a>
+                    <a href="#" class="invisible-btn" title="Friends"></a>
+                    <a href="#" class="invisible-btn" title="Avatar"></a>
+                    <a href="#" class="invisible-btn" title="Inventory"></a>
+                    <a href="#" class="invisible-btn" title="Trade"></a>
+                    <a href="#" class="invisible-btn" title="Groups"></a>
+                    <a href="#" class="invisible-btn" title="Forums"></a>
+                    <a href="#" class="invisible-btn" title="Download"></a>
+                </div>
+            </div>
+            
+            <div id="admin-section" class="sidebar-admin-wrapper" style="display: none;">
+                <img src="adminside.png" alt="Admin Menu" class="sidebar-img-admin">
+                <a href="#" class="invisible-admin-btn" title="Admin"></a>
+            </div>
 
             <button class="upgrade-btn">Upgrade Now</button>
             <button class="logout-btn" onclick="logoutUser()">Log Out</button>
@@ -84,14 +96,15 @@
                 return;
             }
 
-            // Update text elements
+            // Update greeting details cleanly
             document.getElementById("dash-greeting").innerText = "Hello, " + savedUser + "!";
             document.getElementById("nav-username").innerText = savedUser + ": 13+";
 
             // SUPER SECRET ADMIN CHECK
             const storedPassword = localStorage.getItem("user_xynova");
             if (savedUser.toLowerCase() === "xynova" && storedPassword === "xynovaofficialaccount") {
-                document.getElementById("admin-btn").style.display = "flex";
+                // Show the admin area container seamlessly
+                document.getElementById("admin-section").style.display = "block";
             }
         };
 
