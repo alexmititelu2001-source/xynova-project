@@ -43,7 +43,7 @@ body {
 
 .nav-left a:hover { text-decoration: underline; }
 
-/* Search Container positioning context */
+/* Search Container Positioning Context */
 .search-container {
     position: relative;
     width: 320px;
@@ -51,27 +51,33 @@ body {
 
 .search-bar {
     width: 100%;
-    padding: 5px 32px 5px 10px;
+    padding: 5px 84px 5px 10px; /* Expanded right padding to fit the new triplet asset grid cleanly */
     border: none;
     border-radius: 3px;
     outline: none;
     font-size: 13px;
 }
 
-/* Position icon directly at the right rim of input bar */
-.search-bar-lens {
+/* Three-Icon Row Flex Layout */
+.search-bar-icons {
     position: absolute;
     right: 8px;
     top: 50%;
     transform: translateY(-50%);
-    height: 16px;
-    width: auto;
-    object-fit: contain;
-    image-rendering: pixelated;
+    display: flex;
+    align-items: center;
+    gap: 6px; 
     pointer-events: none;
 }
 
-/* Dropdown Context Selection Window Layout rules */
+.search-bar-icons img {
+    height: 18px;
+    width: auto;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+/* Dropdown Window Layout Configuration */
 .search-dropdown {
     display: none;
     position: absolute;
@@ -114,7 +120,7 @@ body {
     gap: 22px;
 }
 
-/* Custom Currency Alignment & Large Sizing Layout */
+/* Currency Panels formatting layout */
 .currency {
     display: inline-flex;
     align-items: center;
@@ -124,13 +130,12 @@ body {
 }
 
 .nav-currency-icon {
-    height: 32px;               /* Scaled layout look matches reference image proportions */
+    height: 32px;               
     width: auto;
     object-fit: contain;
     image-rendering: pixelated; 
 }
 
-/* Custom Settings Gear Layout */
 .nav-settings-icon {
     height: 30px;
     width: auto;
@@ -195,12 +200,10 @@ body {
     margin-left: -5px;
 }
 
-/* Spacing offset for admin panel image alignment */
 .sidebar-admin-wrapper {
     margin-top: 75px; 
 }
 
-/* Invisible Target Overlay Map Grid Structuring */
 .invisible-overlay-grid {
     position: absolute;
     top: 0;
@@ -211,7 +214,6 @@ body {
     flex-direction: column;
 }
 
-/* Sub-divided blocks matching text locations safely */
 .invisible-btn {
     flex: 1;
     background: transparent;
@@ -224,7 +226,6 @@ body {
     background-color: rgba(0, 0, 0, 0.06);
 }
 
-/* Admin Specific Input Overlay Target Area mapping */
 .invisible-admin-btn {
     position: absolute;
     top: 0;
@@ -239,7 +240,7 @@ body {
     background-color: rgba(0, 0, 0, 0.06);
 }
 
-/* Core Interface Buttons */
+/* Action Control Blocks */
 .upgrade-btn {
     margin-top: 30px;
     padding: 8px;
@@ -267,7 +268,6 @@ body {
 
 .logout-btn:hover { background-color: #bbb; }
 
-/* Content Framing Spaces Layout */
 .content-area {
     flex-grow: 1;
     display: flex;
