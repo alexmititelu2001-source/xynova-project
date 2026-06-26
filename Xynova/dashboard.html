@@ -96,14 +96,13 @@
                 return;
             }
 
-            // Update greeting details cleanly
+            // Sync user data to greeting panels
             document.getElementById("dash-greeting").innerText = "Hello, " + savedUser + "!";
             document.getElementById("nav-username").innerText = savedUser + ": 13+";
 
-            // SUPER SECRET ADMIN CHECK
+            // Protected profile checker module logic
             const storedPassword = localStorage.getItem("user_xynova");
             if (savedUser.toLowerCase() === "xynova" && storedPassword === "xynovaofficialaccount") {
-                // Show the admin area container seamlessly
                 document.getElementById("admin-section").style.display = "block";
             }
         };
