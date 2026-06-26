@@ -10,7 +10,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Dark Brown Top Navigation */
+/* Dark Brown Navigation Styling */
 .top-nav {
     background-color: #4a3028;
     color: white;
@@ -57,18 +57,20 @@ body {
     gap: 15px;
 }
 
-/* Currency Styling for Custom Icons */
+/* Custom Currency Alignment & Scaled Sizing Layout */
 .currency {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;              
     font-weight: bold;
+    font-size: 16px;       
 }
 
 .nav-currency-icon {
-    height: 18px;
+    height: 24px;          /* Scaled up bigger to mirror retro engine layouts natively */
     width: auto;
     object-fit: contain;
+    image-rendering: pixelated; /* Retains clear pixel values on high-res rendering monitors */
 }
 
 .orange-strip {
@@ -84,9 +86,9 @@ body {
     padding-top: 20px;
 }
 
-/* -------------------- */
-/* IMAGE SIDEBAR SYSTEM */
-/* -------------------- */
+/* ------------------------------------------- */
+/* IMAGE-DRIVEN SIDEBAR COORD OVERLAY STYLING  */
+/* ------------------------------------------- */
 .sidebar {
     width: 180px;
     background-color: transparent;
@@ -114,7 +116,6 @@ body {
     color: #111;
 }
 
-/* Menu Wrappers positioning the click hits on top of images */
 .sidebar-menu-wrapper, .sidebar-admin-wrapper {
     position: relative;
     width: 100%;
@@ -128,12 +129,12 @@ body {
     margin-left: -5px;
 }
 
-/* 2cm Down Spacing for Admin block */
+/* Precisely 2cm down gap distance separation mapping */
 .sidebar-admin-wrapper {
     margin-top: 75px; 
 }
 
-/* Invisible overlay map grids */
+/* Invisible Target Overlay Map Grid Structuring */
 .invisible-overlay-grid {
     position: absolute;
     top: 0;
@@ -144,7 +145,7 @@ body {
     flex-direction: column;
 }
 
-/* Splitting the map height into 10 perfectly proportioned clickable blocks */
+/* Sub-divided blocks matching text locations safely */
 .invisible-btn {
     flex: 1;
     background: transparent;
@@ -153,12 +154,11 @@ body {
     transition: background 0.1s ease-in-out;
 }
 
-/* Subtle visual indicator when hovering over items */
 .invisible-btn:hover {
-    background-color: rgba(0, 0, 0, 0.07);
+    background-color: rgba(0, 0, 0, 0.06);
 }
 
-/* Admin singular transparent trigger hit target */
+/* Admin Specific Input Overlay Target Area mapping */
 .invisible-admin-btn {
     position: absolute;
     top: 0;
@@ -170,10 +170,10 @@ body {
 }
 
 .invisible-admin-btn:hover {
-    background-color: rgba(0, 0, 0, 0.07);
+    background-color: rgba(0, 0, 0, 0.06);
 }
 
-/* Action Buttons */
+/* Core Interface Buttons */
 .upgrade-btn {
     margin-top: 30px;
     padding: 8px;
@@ -201,7 +201,7 @@ body {
 
 .logout-btn:hover { background-color: #bbb; }
 
-/* Content Area layout elements */
+/* Content Framing Spaces Layout */
 .content-area {
     flex-grow: 1;
     display: flex;
